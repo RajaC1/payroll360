@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start your free Payroll360 workspace</title>
+  <link rel="icon" type="image/png" href="assets/payroll360-logo.png">
+  <link rel="stylesheet" href="app.css?v=2.0.0">
+  <style>
+    body { background: var(--bg, #f4f8f5); }
+    /* A rectangular two-column box: a marketing panel on the left, the sign-up form on the right. */
+    .auth-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; position: relative; overflow: hidden; }
+    /* The same "Our Home Planet" video as the appz360.com prefooter (its own baked-in caption removed), muted
+       and looping across the whole page behind the box, under a dark overlay so the box keeps strong contrast. */
+    .auth-shell .av-bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; }
+    .auth-shell .av-shell-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(1,68,45,.80) 0%, rgba(1,30,20,.88) 100%); }
+    @media (prefers-reduced-motion: reduce) {
+      .auth-shell .av-bg { display: none; }
+    }
+    .auth-card { position: relative; z-index: 2; width: 100%; max-width: 980px; min-height: 620px; background: var(--surface, #fff); border: 1px solid var(--line, #d9e8de); border-radius: 16px; box-shadow: 0 20px 50px -10px rgba(0,0,0,.45); overflow: hidden; display: flex; }
+    .auth-visual { flex: 0 0 42%; background: linear-gradient(135deg, var(--accent, #14a841) 0%, #01442D 100%); color: #fff; padding: 44px 36px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .auth-visual::before { content: ''; position: absolute; z-index: 1; top: -70px; right: -70px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.08); }
+    .auth-visual::after { content: ''; position: absolute; z-index: 1; left: -60px; bottom: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,.06); }
+    .auth-visual .av-logo-wrap { align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; background: #fff; padding: 8px 12px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+    .auth-visual .av-logo { height: 56px; width: 56px; display: block; object-fit: contain; }
+    .auth-visual h2 { font-size: 1.5rem; font-weight: 800; line-height: 1.28; margin: 28px 0 10px; color: #fff; }
+    .auth-visual .av-sub { font-size: .88rem; line-height: 1.6; color: rgba(255,255,255,.85); margin: 0 0 22px; }
+    .auth-visual .av-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .auth-visual .av-features li { display: flex; align-items: flex-start; gap: 10px; font-size: .85rem; color: #fff; }
+    .auth-visual .av-features svg { flex: none; margin-top: 1px; background: rgba(255,255,255,.18); border-radius: 50%; padding: 3px; width: 18px; height: 18px; box-sizing: border-box; }
+    .auth-visual .av-foot { font-size: .76rem; color: rgba(255,255,255,.65); margin: 0; }
+    .auth-form-panel { flex: 1 1 58%; padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; min-width: 0; overflow-y: auto; }
+    @media (max-width: 760px) {
+      .auth-card { flex-direction: column; max-width: 460px; min-height: 0; }
+      .auth-visual { padding: 28px 24px; }
+      .auth-visual h2 { font-size: 1.2rem; margin: 18px 0 8px; }
+      .auth-visual .av-features { display: none; }
+      .auth-form-panel { padding: 28px 24px; }
+    }
+    .slug-row { display: flex; align-items: stretch; gap: 0; }
+    .slug-row input { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+    .slug-suffix { display: flex; align-items: center; padding: 0 10px; background: var(--surface-subtle, #f8fbf9); border: 1px solid var(--line, #d9e8de); border-left: 0; border-top-right-radius: 8px; border-bottom-right-radius: 8px; font-size: .82rem; color: var(--ink-muted, #667); white-space: nowrap; }
+    .slug-note { font-size: .78rem; margin-top: 4px; min-height: 1.1em; }
+    .slug-note.ok { color: #14a841; }
+    .slug-note.bad { color: #d92d20; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    #done { display: none; text-align: center; }
+    #done .big-check { font-size: 2.4rem; }
+  </style>
+</head>
+<body>
+  <div class="auth-shell">
+    <video class="av-bg" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback>
+      <source src="assets/our-home-planet-clean.mp4" type="video/mp4">
+    </video>
+    <div class="av-shell-overlay"></div>
+    <div class="auth-card">
+    <div class="auth-visual">
+      <div class="av-logo-wrap"><img class="av-logo" src="assets/payroll360-logo.png" alt="Payroll360"></div>
+      <div>
+        <h2>Payroll, built for Microsoft 365 teams.</h2>
+        <p class="av-sub">Run payroll, manage compensation, and give employees self-service access to their payslips - all in your own isolated workspace.</p>
+        <ul class="av-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Calculate and approve payroll in minutes</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Payslips generated and emailed automatically</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Your company's data stays isolated in its own workspace</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Free to use - no credit card required</span></li>
+        </ul>
+      </div>
+      <p class="av-foot">Part of the Appz360 family of Microsoft 365 apps.</p>
+    </div>
+    <div class="auth-form-panel">
+
+      <form id="signup-form" novalidate>
+        <h2 style="margin:0 0 4px">Start your free workspace</h2>
+        <p class="muted small" style="margin:0 0 18px">No credit card. Your company's payroll data stays isolated in its own workspace.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="f-company">Company name <span class="req">*</span></label>
+          <input class="form-control" id="f-company" name="company_name" required maxlength="120" placeholder="Acme Cloud Technologies Inc.">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-slug">Your workspace address</label>
+          <div class="slug-row">
+            <input class="form-control" id="f-slug" name="slug" maxlength="40" placeholder="acme-cloud">
+            <span class="slug-suffix" id="slug-domain">.payroll360.app</span>
+          </div>
+          <div class="slug-note" id="slug-note"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-name">Your name <span class="req">*</span></label>
+          <input class="form-control" id="f-name" name="admin_name" required maxlength="100" placeholder="Ada Admin">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-email">Work email <span class="req">*</span></label>
+          <input class="form-control" id="f-email" name="admin_email" type="email" required maxlength="200" placeholder="you@company.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-password">Password <span class="req">*</span></label>
+          <input class="form-control" id="f-password" name="admin_password" type="password" required maxlength="200" autocomplete="new-password">
+          <div class="field-help">At least 10 characters, with a letter and a number.</div>
+        </div>
+
+        <!-- Honeypot: hidden from people, a giveaway that a form fill was automated. -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div id="form-error" class="form-alert" style="display:none"></div>
+
+        <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;margin-top:8px">Create my workspace</button>
+        <p class="muted small" style="margin-top:14px;text-align:center">Already have a workspace? <a href="index.html">Sign in</a></p>
+      </form>
+
+      <div id="done">
+        <div class="big-check">✅</div>
+        <h2 id="done-title" style="margin:10px 0 6px">Check your email</h2>
+        <p class="muted" id="done-msg"></p>
+        <a class="btn btn-primary" id="done-link" href="#" style="width:100%;display:none;margin-top:14px">Open Payroll360</a>
+      </div>
+    </div>
+  </div></div>
+
+  <script type="module">
+    const form = document.getElementById('signup-form');
+    const slugInput = document.getElementById('f-slug');
+    const companyInput = document.getElementById('f-company');
+    const slugNote = document.getElementById('slug-note');
+    const errBox = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    // Opened from the confirmation email (signup.html?verify=TOKEN): create the workspace now.
+    const verifyToken = new URLSearchParams(location.search).get('verify');
+    if (verifyToken) {
+      form.style.display = 'none';
+      document.getElementById('done').style.display = 'block';
+      (async () => {
+        try {
+          const r = await fetch('api/signup/verify?token=' + encodeURIComponent(verifyToken));
+          const j = await r.json();
+          if (!r.ok) throw new Error(j.error?.message || 'This link is invalid or has expired.');
+          const isLocal = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+          const url = (j.tenant.url && !isLocal) ? j.tenant.url : 'index.html?tenant=' + encodeURIComponent(j.tenant.slug);
+          document.getElementById('done-title').textContent = 'Your workspace is ready';
+          document.getElementById('done-msg').textContent = `${j.tenant.company_name} is set up. Sign in with the email and password you chose at sign-up.`;
+          document.getElementById('done-link').href = url;
+          document.getElementById('done-link').style.display = 'block';
+        } catch (err) {
+          document.getElementById('done-title').textContent = 'Link not accepted';
+          document.getElementById('done-msg').textContent = err.message;
+        }
+      })();
+    }
+
+    const slugify = (s) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
+    let slugTouched = false;
+    slugInput.addEventListener('input', () => { slugTouched = true; checkSlug(); });
+    companyInput.addEventListener('input', () => { if (!slugTouched) slugInput.value = slugify(companyInput.value); checkSlug(); });
+
+    let checkTimer;
+    function checkSlug() {
+      clearTimeout(checkTimer);
+      const slug = slugify(slugInput.value);
+      if (!slug) { slugNote.textContent = ''; slugNote.className = 'slug-note'; return; }
+      slugNote.textContent = 'Checking…';
+      slugNote.className = 'slug-note';
+      checkTimer = setTimeout(async () => {
+        try {
+          const r = await fetch('api/signup/check-slug?slug=' + encodeURIComponent(slug));
+          const j = await r.json();
+          slugNote.textContent = j.available ? `${slug}.payroll360.app is available` : `${slug} is taken — we’ll pick a similar one if you continue`;
+          slugNote.className = 'slug-note ' + (j.available ? 'ok' : 'bad');
+        } catch { slugNote.textContent = ''; }
+      }, 350);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.style.display = 'none';
+      if (submitBtn.dataset.busy === '1') return; // prevents double submission
+      submitBtn.dataset.busy = '1';
+      submitBtn.disabled = true;
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Creating your workspace…';
+      const body = {
+        company_name: companyInput.value.trim(),
+        slug: slugify(slugInput.value),
+        admin_name: document.getElementById('f-name').value.trim(),
+        admin_email: document.getElementById('f-email').value.trim(),
+        admin_password: document.getElementById('f-password').value,
+        website: document.getElementById('f-website').value, // honeypot
+      };
+      try {
+        const r = await fetch('api/signup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        const j = await r.json();
+        if (!r.ok) {
+          const msg = j.error?.fields ? Object.values(j.error.fields).join(' ') : (j.error?.message || 'Something went wrong.');
+          throw new Error(msg);
+        }
+        // Sign-up is not finished until the email link is opened, so nothing is created yet.
+        document.getElementById('done-title').textContent = 'Check your email';
+        document.getElementById('done-msg').textContent = j.message;
+        form.style.display = 'none';
+        document.getElementById('done').style.display = 'block';
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.style.display = 'block';
+      } finally {
+        submitBtn.dataset.busy = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
+      }
+    });
+  </script>
+</body>
+</html>

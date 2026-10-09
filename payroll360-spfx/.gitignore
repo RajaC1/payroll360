@@ -1,0 +1,8 @@
+node_modules
+lib
+dist
+temp
+solution
+*.sppkg
+.vscode
+.DS_Store

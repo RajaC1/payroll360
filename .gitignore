@@ -1,0 +1,16 @@
+# Node / SPFx build
+node_modules/
+lib/
+dist/
+temp/
+sharepoint/
+*.sppkg
+.vscode/
+
+# PHP app runtime data (never commit real credentials or live databases)
+payroll360-app/api/data/
+payroll360-app/payslip-config.php
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "payroll360-spfx-client-side-solution",
+    "id": "9f4df8e6-3dbe-4663-9f73-185f4ce5fd26",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Appz360",
+      "websiteUrl": "https://www.appz360.com",
+      "privacyUrl": "https://www.appz360.com/cookie-policy",
+      "termsOfUseUrl": "https://www.appz360.com/terms",
+      "mpnId": "undefined"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Payroll360 full-page app" },
+      "longDescription": { "default": "Runs Payroll360 as a full-page app inside SharePoint, with no SharePoint chrome around it." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "payroll360-spfx Feature",
+        "description": "The feature that activates elements of the payroll360-spfx solution.",
+        "id": "946de72e-aefe-4601-ab40-0590b5dee83c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/payroll360-spfx.sppkg"
+  }
+}

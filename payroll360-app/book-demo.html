@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-MLPJ4PXT");</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Payroll360 demo</title>
+  <link rel="icon" type="image/png" href="assets/payroll360-logo.png">
+  <link rel="stylesheet" href="app.css?v=2.0.0">
+  <style>
+    body { background: var(--bg, #f4f8f5); }
+    .demo-wrap { max-width: 460px; margin: 48px auto; padding: 0 16px; }
+    .demo-card { background: var(--surface, #fff); border: 1px solid var(--line, #d9e8de); border-radius: 12px; padding: 28px 26px; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+    .demo-brand { display: flex; justify-content: center; margin-bottom: 18px; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLPJ4PXT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="demo-wrap">
+    <div class="demo-card">
+      <div class="demo-brand"><img src="assets/payroll360-logo.png" alt="Payroll360" style="height:110px;width:auto"></div>
+
+      <form id="demo-form" novalidate>
+        <h2 style="margin:0 0 4px">Book a demo</h2>
+        <p class="muted small" style="margin:0 0 18px">Tell us a little about you, then pick a time that suits you.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="f-name">Your name <span class="req">*</span></label>
+          <input class="form-control" id="f-name" name="name" required maxlength="100" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-email">Work email <span class="req">*</span></label>
+          <input class="form-control" id="f-email" name="email" type="email" required maxlength="200" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-company">Company</label>
+          <input class="form-control" id="f-company" name="company" maxlength="120" autocomplete="organization">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-phone">Phone</label>
+          <input class="form-control" id="f-phone" name="phone" maxlength="40" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-message">What would you like to see?</label>
+          <textarea class="form-control" id="f-message" name="message" rows="3" maxlength="1000"></textarea>
+        </div>
+
+        <!-- Honeypot: hidden from people, filled in only by automated form fills. -->
+        <div class="hp" aria-hidden="true">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div id="form-error" class="form-alert" style="display:none"></div>
+
+        <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;margin-top:8px">Submit and choose a time</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    const form = document.getElementById('demo-form');
+    const errBox = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.style.display = 'none';
+      if (submitBtn.dataset.busy === '1') return; // prevents double submission
+      submitBtn.dataset.busy = '1';
+      submitBtn.disabled = true;
+      const original = submitBtn.textContent;
+      submitBtn.textContent = 'Saving...';
+      const body = {
+        name: document.getElementById('f-name').value.trim(),
+        email: document.getElementById('f-email').value.trim(),
+        company: document.getElementById('f-company').value.trim(),
+        phone: document.getElementById('f-phone').value.trim(),
+        message: document.getElementById('f-message').value.trim(),
+        website: document.getElementById('f-website').value, // honeypot
+      };
+      try {
+        const r = await fetch('api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        const j = await r.json();
+        if (!r.ok) {
+          const msg = j.error?.fields ? Object.values(j.error.fields).join(' ') : (j.error?.message || 'Something went wrong.');
+          throw new Error(msg);
+        }
+        // Send the visitor on to Microsoft Bookings to pick a date and time.
+        window.location.href = j.redirect;
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.style.display = 'block';
+        submitBtn.dataset.busy = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = original;
+      }
+    });
+  </script>
+</body>
+</html>

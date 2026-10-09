@@ -1,0 +1,27 @@
+# Payroll360 app: web hardening, SharePoint/Teams embedding, and /api routing.
+
+Options -Indexes
+
+# Never serve configuration or source.
+<FilesMatch "^payslip-config(\.sample)?\.php$">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteRule ^api/(src|data|tests)/ - [F,L]
+RewriteRule ^api/cli\.php$ - [F,L]
+
+# Every /api request goes to the front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api(/.*)?$ api/index.php [QSA,L]
+
+<IfModule mod_headers.c>
+    Header unset X-Frame-Options
+    Header set X-Content-Type-Options "nosniff"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Content-Security-Policy "frame-ancestors 'self' https://*.sharepoint.com https://*.office.com https://*.office365.com https://teams.microsoft.com https://*.teams.microsoft.com https://teams.cloud.microsoft https://*.teams.cloud.microsoft https://*.cloud.microsoft https://appz360.com https://*.appz360.com;"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>

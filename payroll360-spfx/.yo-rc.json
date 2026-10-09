@@ -1,0 +1,20 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.19.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "payroll360-spfx",
+    "libraryId": "8e32db0a-d71a-4120-af40-c5e1742caa03",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "payroll360-spfx",
+    "solutionShortDescription": "Payroll360 full-page app for SharePoint",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

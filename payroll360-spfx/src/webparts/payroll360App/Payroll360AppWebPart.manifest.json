@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "69d03e73-5b1c-4d5c-a1c0-3ef9ef622f8b",
+  "alias": "Payroll360AppWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportsThemeVariants": true,
+
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab", "TeamsPersonalApp"],
+
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Advanced" },
+      "title": { "default": "Payroll360" },
+      "description": { "default": "Runs Payroll360 as a full-page app, with no SharePoint chrome around it." },
+      "officeFabricIconFontName": "Money",
+      "properties": {
+        "appUrl": "https://www.appz360.com/payroll360-app/",
+        "iframeTitle": "Payroll360"
+      }
+    }
+  ]
+}

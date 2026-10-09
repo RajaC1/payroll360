@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-MLPJ4PXT");</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll360</title>
+  <link rel="icon" type="image/png" href="assets/payroll360-logo.png">
+  <link rel="stylesheet" href="app.css?v=2.0.0">
+  <link rel="stylesheet" href="assets/payroll.css?v=2.0.0">
+  <!-- Microsoft Teams / SharePoint host SDK (only used when embedded) -->
+  <script src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js" defer></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLPJ4PXT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div id="app"><div class="boot"><span class="spinner"></span>&nbsp; Loading Payroll360...</div></div>
+  <div id="overlay-root"></div>
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <noscript><p style="padding:24px">Payroll360 needs JavaScript to run.</p></noscript>
+  <script>
+    // Opened by double-clicking the file: browsers block ES modules there and there is no backend. Say so.
+    if (location.protocol === 'file:') {
+      document.getElementById('app').innerHTML = '<div style="max-width:560px;margin:60px auto;padding:24px;font-family:Arial,sans-serif;color:#01442D;line-height:1.5">' +
+        '<h2>Payroll360 must be started, not opened as a file</h2>' +
+        '<p>It needs its PHP server. Double-click <b>start-payroll360.bat</b> in this folder, then open <b>http://127.0.0.1:8360/</b>.</p>' +
+        '<p>If PHP is not installed, install PHP 8.1 or newer from <b>windows.php.net/download</b> and make sure <code>php</code> is on your PATH.</p></div>';
+    }
+  </script>
+  <script type="module" src="app/main.js?v=2.0.0"></script>
+</body>
+</html>
